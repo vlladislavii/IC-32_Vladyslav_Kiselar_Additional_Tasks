@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Table Layout</title>
+    <style>
+        table {
+            width: 650px;
+            height: 750px;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        td {
+            border: 2px solid black;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+        .yellow { background-color: yellow; height: 90px; }
+        .blue { background-color: blue; color: white; }
+        .red { background-color: red; color: white; }
+        .white { background-color: white; }
+        input {
+            margin-left: 20px;
+            float: left;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="yellow">
+            <td colspan="7"><input type="text">1</td>
+        </tr>
+        <tr>
+            <td class="blue">2</td>
+            <td class="white"></td>
+            <td class="red">3</td>
+            <td class="white"></td>
+            <td class="white">4</td>
+            <td class="white"></td>
+            <td class="red">5</td>
+        </tr>
+        <tr>
+            <td colspan="7" class="yellow">6</td>
+        </tr>
+    </table>
+</body>
+</html>

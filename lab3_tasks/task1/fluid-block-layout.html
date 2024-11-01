@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluid Block Layout</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .container {
+            width: 42%;
+            height: 95vh;
+            margin: 0 auto;
+        }
+
+        .block {
+            border: 1px solid black;
+            font-weight: bold;
+            box-sizing: border-box;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header {
+            background-color: yellow;
+            height: 12%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .header input {
+            width: 20%;
+            height: 40%;
+            border: 1px solid black;
+        }
+
+        .footer {
+            background-color: yellow;
+            height: 12%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blue { background-color: blue; color: white; }
+        .red { background-color: red; color: white; }
+        .white { background-color: white; }
+
+        .row {
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .blue-block { width: 25%; }
+        .red-block { width: 25%; }
+        .white-block { width: 25%; }
+        .spacer { width: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header block">
+            <input type="text">
+            <div>1</div>
+        </div>
+
+        <div class="row">
+            <div class="col blue-block block blue">2</div>
+            <div class="col spacer"></div>
+            <div class="col red-block block red">3</div>
+            <div class="col spacer"></div>
+            <div class="col white-block block white">4</div>
+            <div class="col spacer"></div>
+            <div class="col red-block block red">5</div>
+        </div>
+
+        <div class="footer block">6</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Block Layout</title>
+    <style>
+        .container {
+            width: 650px;
+            height: 750px;
+            margin: 0 auto;
+        }
+
+        .block {
+            border: 1px solid black;
+            font-weight: bold;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .header {
+            background-color: yellow;
+            height: 90px;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .header input {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            width: 200px;
+            height: 20px;
+            border: 1px solid black;
+        }
+
+        .footer {
+            background-color: yellow;
+            height: 90px;
+            clear: both;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blue { background-color: blue; color: white; }
+        .red { background-color: red; color: white; }
+        .white { background-color: white; }
+        
+        .row {
+            height: 550px;
+        }
+
+        .col {
+            float: left;
+            height: 600px;
+        }
+
+        .blue-block { width: 134px; }
+        .red-block { width: 134px; }
+        .white-block { width: 134px; }
+
+        .center-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header block">
+            <input type="text" style="width: 200px; height: 20px; border: 1px solid black;">
+            1
+        </div>
+
+        <div class="row">
+            <div class="col blue-block block blue center-block">2</div>
+            <div class="col white-block block white" style="width: 38px;"></div>
+            <div class="col red-block block red center-block">3</div>
+            <div class="col white-block block white" style="width: 38px;"></div>
+            <div class="col white-block block white center-block">4</div>
+            <div class="col white-block block white" style="width: 38px;"></div>
+            <div class="col red-block block red center-block">5</div>
+        </div>
+
+        <div class="footer block">6</div>
+    </div>
+
+</body>
+</html>
