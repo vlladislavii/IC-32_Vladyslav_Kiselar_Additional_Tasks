@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alarm Clock</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4c76e3, #43c0e4);
+      color: #333;
+    }
+
+    .alarm-container {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      padding: 30px 20px;
+      width: 350px;
+      text-align: center;
+    }
+
+    .alarm-container h1 {
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    input[type="datetime-local"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .set-alarm {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .set-alarm:hover {
+      background-color: #43a047;
+    }
+
+    .disable-alarm {
+      background-color: #e53935;
+      color: white;
+    }
+
+    .disable-alarm:hover {
+      background-color: #d32f2f;
+    }
+
+    .notification {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      color: #ffffff;
+      background-color: #ff6f61;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.2em;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="alarm-container">
+    <h1>Alarm Clock</h1>
+    <input type="datetime-local" id="alarm-time">
+    <button id="set-alarm-btn" class="set-alarm" onclick="setAlarm()">Set Alarm</button>
+    <button id="disable-alarm-btn" class="disable-alarm" onclick="disableAlarm()" style="display: none;">Disable Alarm</button>
+    <div id="notification" class="notification">🔔 Alarm is ringing! 🔔</div>
+  </div>
+
+  <audio id="alarm-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-01c.mp3" preload="auto"></audio>
+
+  <script>
+    let alarmTime = null;
+    let alarmTimeout = null;
+
+    function setAlarm() {
+      const alarmInput = document.getElementById("alarm-time").value;
+      if (!alarmInput) {
+        alert("Please select a date and time for the alarm.");
+        return;
+      }
+
+      alarmTime = new Date(alarmInput).getTime();
+      const currentTime = new Date().getTime();
+
+      if (alarmTime <= currentTime) {
+        alert("Please set a future date and time for the alarm.");
+        return;
+      }
+
+      document.getElementById("set-alarm-btn").style.display = "none";
+      document.getElementById("disable-alarm-btn").style.display = "block";
+      scheduleAlarm();
+      alert("Alarm is set!");
+    }
+
+    function scheduleAlarm() {
+      const timeDifference = alarmTime - new Date().getTime();
+      console.log("Scheduling alarm to ring in", timeDifference, "ms");
+      
+      alarmTimeout = setTimeout(() => {
+        console.log("Alarm is ringing");
+        document.getElementById("notification").style.display = "block";
+        playAlarmSound();
+        
+        setTimeout(disableAlarm, 10000);
+      }, timeDifference);
+    }
+
+    function playAlarmSound() {
+      const alarmSound = document.getElementById("alarm-sound");
+      alarmSound.play();
+    }
+
+    function disableAlarm() {
+      clearTimeout(alarmTimeout);
+      alarmTime = null;
+      document.getElementById("set-alarm-btn").style.display = "block";
+      document.getElementById("disable-alarm-btn").style.display = "none";
+      document.getElementById("notification").style.display = "none";
+      console.log("Alarm dismissed");
+    }
+  </script>
+</body>
+</html>

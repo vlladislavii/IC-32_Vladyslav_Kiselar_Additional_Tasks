@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Processing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .container {
+      width: 300px;
+      text-align: center;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+      width: 100%;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    pre {
+      text-align: left;
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Array Processing</h2>
+    <input id="array1" placeholder="Enter elements for array 1, comma-separated">
+    <input id="array2" placeholder="Enter elements for array 2, comma-separated">
+    <button onclick="processArrays()">Process Arrays</button>
+
+    <div class="result">
+      <h3>Results:</h3>
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <script>
+    function processArrays() {
+      const array1 = document.getElementById('array1').value.split(',').map(Number);
+      const array2 = document.getElementById('array2').value.split(',').map(Number);
+      
+      const commonMin = findSmallestCommonElement(array1, array2);
+      const sortedArray = bubbleSort([...array1]);
+
+      displayResults(array1, array2, commonMin, sortedArray);
+      console.log("Original Array 1:", array1);
+      console.log("Original Array 2:", array2);
+      console.log("Smallest Common Element:", commonMin);
+      console.log("Sorted Array 1:", sortedArray);
+    }
+
+    function findSmallestCommonElement(arr1, arr2) {
+      const commonElements = arr1.filter(item => arr2.includes(item));
+      return commonElements.length > 0 ? Math.min(...commonElements) : "No common elements";
+    }
+
+    function bubbleSort(arr) {
+      const n = arr.length;
+      for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+      return arr;
+    }
+
+    function displayResults(array1, array2, commonMin, sortedArray) {
+      const output = document.getElementById('output');
+      output.textContent = `
+Original Array 1: ${array1.join(", ")}
+Original Array 2: ${array2.join(", ")}
+Smallest Common Element: ${commonMin}
+Sorted Array 1: ${sortedArray.join(", ")}
+      `;
+    }
+  </script>
+</body>
+</html>

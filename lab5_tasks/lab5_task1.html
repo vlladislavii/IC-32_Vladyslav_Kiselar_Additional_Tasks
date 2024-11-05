@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Message</title>
+</head>
+<body>
+    <script>
+        function getShippingMessage(country, price, deliveryFee) {
+            const totalPrice = price + deliveryFee;
+            return `Shipping to ${country} will cost ${totalPrice} credits`;
+        }
+
+        const country = prompt("Enter the country for shipping:");
+        const price = parseFloat(prompt("Enter the price of the product:"));
+        const deliveryFee = parseFloat(prompt("Enter the delivery fee:"));
+
+        const message = getShippingMessage(country, price, deliveryFee);
+
+        console.log(message);
+        document.body.innerHTML += `<p>${message}</p>`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Array Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .result {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Make Array Example</h1>
+<button id="showResult">Показати результат</button>
+<div class="result" id="result" style="display: none;"></div>
+
+<script>
+    function makeArray(firstArray, secondArray, maxLength) {
+        const newArray = firstArray.concat(secondArray);
+        if (newArray.length > maxLength) {
+            return newArray.slice(0, maxLength);
+        }
+        return newArray;
+    }
+
+    document.getElementById('showResult').addEventListener('click', function() {
+        try {
+            const array1 = [1, 2, 3];
+            const array2 = [4, 5, 6, 7];
+            const maxLength = 5;
+
+            const result = makeArray(array1, array2, maxLength);
+            
+            console.log(`Результат: [${result.join(', ')}]`);
+            
+            document.getElementById('result').innerText = `Результат: [${result.join(', ')}]`;
+            document.getElementById('result').style.display = 'block';
+        } catch (error) {
+            console.error('Error occurred:', error);
+        }
+    });
+</script>
+
+</body>
+</html>
