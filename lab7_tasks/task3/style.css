@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d9f5d9;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.task {
+    background-color: #82c785;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+h2 {
+    color: #fff;
+}
+
+ul {
+    list-style-type: disc;
+    padding: 0;
+    margin: 10px 0;
+    color: #fff;
+}
+
+li {
+    margin: 5px 0;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
